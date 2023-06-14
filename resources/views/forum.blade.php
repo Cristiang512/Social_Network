@@ -3,7 +3,7 @@
 @section('title', 'Foros')
 
 @section('content_header')
-    <a href="#" class="btn btn-success">Crear Foro</a>
+    <a href="{{ url('/forum/create') }}" class="btn btn-success">Crear Foro</a>
 @stop
 
 @section('content')

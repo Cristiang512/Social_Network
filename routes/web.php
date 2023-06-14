@@ -26,16 +26,24 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// ver como agregar para que solo sea autenticado
+
+Route::get('/group/create', [GroupController::class, 'create']);
+Route::get('/forum/create', [ForumController::class, 'create']);
+
+
 Route::apiResource('/wall', PublicationController::class);
+
 Route::apiResource('/group', GroupController::class);
 Route::apiResource('/forum', ForumController::class);
 Route::apiResource('/friend', FriendController::class);
 Route::apiResource('/beneficiary', BeneficiaryController::class);
 Route::apiResource('/analysis', AnalysisController::class);
+//Rutas de enlaces 
+
+
 
 //Route::get('/investigation_groups', [App\Http\Controllers\GroupController::class, 'index'])->name('investigation_groups');
-//Route::get('/forums', [App\Http\Controllers\ForumController::class, 'index'])->name('forums');
+//
 //Route::get('/friends', [App\Http\Controllers\FriendController::class, 'index'])->name('friends');
 //Route::get('/beneficiaries', [App\Http\Controllers\BeneficiaryController::class, 'index'])->name('beneficiaries');
 //Route::get('/analysis', [App\Http\Controllers\AnalysisController::class, 'index'])->name('analysis');

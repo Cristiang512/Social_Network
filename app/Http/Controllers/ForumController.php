@@ -17,6 +17,11 @@ class ForumController extends Controller
         return view('forum');
     }
 
+
+    public function create()
+    {
+        return view('forum_create');
+    }
     /**
      * Store a newly created resource in storage.
      *

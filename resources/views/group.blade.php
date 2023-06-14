@@ -8,7 +8,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <a href="#" class="btn btn-success">Crear Grupo</a>
+        <a href="{{ url('/group/create') }}" class="btn btn-success">Crear Grupo</a>
     </div>
 
 @for ($i = 1; $i <=10; $i++)

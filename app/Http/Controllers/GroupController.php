@@ -17,6 +17,11 @@ class GroupController extends Controller
         return view('group');
     }
 
+    public function create()
+    {
+        return view('group_create');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
