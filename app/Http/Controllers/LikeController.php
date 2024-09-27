@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Like;
 use Illuminate\Http\Request;
+use App\Models\Publication;
 
 class LikeController extends Controller
 {
@@ -17,48 +18,99 @@ class LikeController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function like($publication)
     {
-        //
+        // return $publication;
+        // $publicationId = $request->input('id_publication');
+        $userId = auth()->user()->id;
+
+        $like = Like::where('id_user', $userId)
+            ->where('id_publication', $publication)
+            ->first();
+
+        if ($like) {
+            // Si ya existe un "Me gusta" del usuario en esta publicación, lo eliminamos
+            $like->delete();
+        } else {
+            // Si no existe un "Me gusta" del usuario en esta publicación, lo creamos
+            Like::create([
+                'id_user' => $userId,
+                'id_publication' => $publication,
+            ]);
+        }
+
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Like  $like
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Like $like)
+    public function likeIdea($idea)
     {
-        //
+        // return $idea;
+        // $ideaId = $request->input('id_idea');
+        $userId = auth()->user()->id;
+
+        $like = Like::where('id_user', $userId)
+            ->where('id_idea', $idea)
+            ->first();
+
+        if ($like) {
+            // Si ya existe un "Me gusta" del usuario en esta publicación, lo eliminamos
+            $like->delete();
+        } else {
+            // Si no existe un "Me gusta" del usuario en esta publicación, lo creamos
+            Like::create([
+                'id_user' => $userId,
+                'id_idea' => $idea,
+            ]);
+        }
+
+        return redirect()->back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Like  $like
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Like $like)
+    public function likeExp($exp)
     {
-        //
+        // return $idea;
+        // $ideaId = $request->input('id_idea');
+        $userId = auth()->user()->id;
+
+        $like = Like::where('id_user', $userId)
+            ->where('id_idea_forum', $exp)
+            ->first();
+
+        if ($like) {
+            // Si ya existe un "Me gusta" del usuario en esta publicación, lo eliminamos
+            $like->delete();
+        } else {
+            // Si no existe un "Me gusta" del usuario en esta publicación, lo creamos
+            Like::create([
+                'id_user' => $userId,
+                'id_idea_forum' => $exp,
+            ]);
+        }
+
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Like  $like
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Like $like)
+    public function likeInf($inf)
     {
-        //
+        // return $idea;
+        // $ideaId = $request->input('id_idea');
+        $userId = auth()->user()->id;
+
+        $like = Like::where('id_user', $userId)
+            ->where('id_information', $inf)
+            ->first();
+
+        if ($like) {
+            // Si ya existe un "Me gusta" del usuario en esta publicación, lo eliminamos
+            $like->delete();
+        } else {
+            // Si no existe un "Me gusta" del usuario en esta publicación, lo creamos
+            Like::create([
+                'id_user' => $userId,
+                'id_information' => $inf,
+            ]);
+        }
+
+        return redirect()->back();
     }
 }

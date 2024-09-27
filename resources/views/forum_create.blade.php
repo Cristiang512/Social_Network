@@ -8,30 +8,32 @@
 @section('content')
 <br>
 <div class="container">
-    <form>
+    <form method="POST" action="{{ route('guardarforo') }}" enctype="multipart/form-data">
+        @csrf
         <div class="card border-success">
             <div class="card-header bg-transparent border-success">Crear foro</div>
             <div class="card-body text-success">
                                
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Descripcion</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label for="description">Descripcion</label>
+                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Fecha apertura</label>
-                    <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="">
+                    <label for="opening">Fecha apertura:</label>
+                    <input type="text" name="opening" id="opening" value="{{ now()->format('Y-m-d') }}" class="form-control" readonly>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Fecha cierre</label>
-                    <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="">
+                    <label for="closing">Fecha cierre</label>
+                    <input type="date" class="form-control" id="closing" name="closing" placeholder=""
+                        min="{{ now()->addDay()->toDateString() }}" required>
                 </div>
                 
             </div>
             <div class="card-footer bg-transparent border-success">
-                <a href="{{ url('/forum') }}" class="btn btn-danger">Cancelar</a>
-                <a href="#" class="btn btn-success">Crear</a>
+                <a href="{{ url('/group') }}" class="btn btn-danger">Cancelar</a>
+                <button type="submit" class="btn btn-success">Crear</button>
             </div>
         </div>
     </form>

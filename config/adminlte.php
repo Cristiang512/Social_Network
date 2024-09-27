@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'wall',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -291,14 +291,30 @@ return [
 
     'menu' => [
         // Navbar items:
+        // [
+        //     'type'         => 'navbar-search',
+        //     'text'         => 'search',
+        //     'topnav_right' => true,
+        // ],
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
+            'icon'         => 'fas fa-fw fa-sign-in-alt', // Cambiamos el tipo de elemento a texto
+            'text'         => 'Iniciar Sesión', // Icono de cerrar sesión
             'topnav_right' => true,
+            'url'          => 'login',
+            'method'       => 'post', // Método POST para cerrar sesión
+            'class'        => 'nav-link', // Clase CSS para estilizar el enlace
+            'style'        => 'cursor: pointer;', // Estilo CSS opcional
         ],
+        
+        
         
 
         // Sidebar items:
+        [
+            'text' => 'Perfil',
+            'url' => 'profile',
+            'icon' => 'fas fa-duotone fa-user',
+        ],
         [
             'text' => 'Muro',
             'url' => 'wall',
@@ -308,6 +324,11 @@ return [
             'text' => 'Grupos de investigacion',
             'url' => 'group',
             'icon' => 'fas fa-fw fa-object-ungroup',
+        ],
+        [
+            'text' => 'Notificaciones',
+            'url' => 'solicitudes',
+            'icon' => 'fas fa-fw fa-bell',
         ],
         [
             'text' => 'Foros',
@@ -320,13 +341,18 @@ return [
             'icon' => 'fas fa-fw fa-tag',
         ],
         [
-            'text' => 'Amigos',
-            'url' => 'friend',
-            'icon' => 'fas fa-fw fa-users',
+            'text' => 'Información de Interés',
+            'url' => 'informacion',
+            'icon' => 'fas fa-fw fa-info-circle',
         ],
+        // [
+        //     'text' => 'Amigos',
+        //     'url' => 'friend',
+        //     'icon' => 'fas fa-fw fa-users',
+        // ],
         ['header' => 'Informacion tecnica'],
         [
-            'text' => 'Beneficiarios',
+            'text' => 'Usuarios',
             'url' => 'beneficiary',
             'icon' => 'fas fa-fw fa-users',
         ],

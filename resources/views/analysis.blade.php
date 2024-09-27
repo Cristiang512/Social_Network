@@ -3,7 +3,7 @@
 @section('title', 'Analisis')
 
 @section('content_header')
-    <a href="#" class="btn btn-success">Crear Analisis</a>
+    <a href="{{ route('analysis.create') }}"class="btn btn-success">Crear Análisis</a>
 @stop
 
 @section('content')
@@ -12,28 +12,33 @@
     <table class="table table-bordered" id=table_ana>
         <thead>
         <tr>
+            <th>#</th>
             <th>Municipio</th>
-            <th>Predio</th>
+            <th>Nombre del Productor</th>
             <th>Ciclo</th>
             <th>Adjunto</th>
-            <th>Acciones</th>
+            <!-- <th>Acciones</th> -->
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>AQUITANIA</td>
-            <td>Finca el descanso</td>
-            <td>Primero</td>
-            <td><a href="#" class="btn btn-success"><i class="fas fa-eye"></i></a></td>
-            <td><a href="#" class="btn btn-success"><i class="fas fa-pen"></i></a></td>
-        </tr>
-        <tr>
-            <td>GARAGOA</td>
-            <td>Finca la justicia</td>
-            <td>Primero</td>
-            <td><a href="#" class="btn btn-success"><i class="fas fa-eye"></i></a></td>
-            <td><a href="#" class="btn btn-success"><i class="fas fa-pen"></i></a></td>
-        </tr>
+            @foreach ($analysis as $analy)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $analy->municipio }}</td>
+                    <td>{{ $analy->productor }}</td>
+                    <td>{{ $analy->ciclo }}</td>
+                    <td>
+                        <a href="{{ $analy->adjunto }}" class="btn btn-success" target="_blank">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                    </td>
+                    <!-- <td>
+                        <a href="{{ route('analysis.edit', ['analysis' => $analy->id_analysis]) }}" class="btn btn-success">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                    </td> -->
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
